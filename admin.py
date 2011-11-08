@@ -1,0 +1,5 @@
+from django.contrib import admin
+from DublinCore.models import QualifiedDublinCoreElement, QualifiedDublinCoreElementHistory
+
+admin.site.register(QualifiedDublinCoreElement)
+admin.site.register(QualifiedDublinCoreElementHistory)
