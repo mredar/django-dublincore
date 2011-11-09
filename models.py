@@ -4,6 +4,7 @@
 ###import codecs #for writing utf-8 files
 ###import lxml.etree as ET
 ###import json
+import xml.sax.saxutils as saxutils
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
