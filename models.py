@@ -93,7 +93,7 @@ class AbstractQualifiedDublinCoreTerm(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return ''.join([self.get_term_display(), ':', self.qualifier, ' = ', self.content, ]) if self.qualifier else ''.join([self.get_term_display(), ' = ', self.content, ])
+        return ''.join([self.get_term_display(), ':', self.qualifier, ' = ', self.content[0:50], '...' if len(self.content)>50 else '' ]) if self.qualifier else ''.join([self.get_term_display(), ' = ', self.content[0:50], '...' if len(self.content) > 50 else '' ])
 
     @property
     def qdc(self):
@@ -190,6 +190,10 @@ class QualifiedDublinCoreElementHistory(AbstractQualifiedDublinCoreTerm):
     ''' Store previous values of QualifiedDublinCoreElement with this.
     Subclassing is not the most db efficient but makes alot of stuff
     easier'''
+    DCELEMENTS = QualifiedDublinCoreElement.DCELEMENTS
+    DCELEMENT_MAP = QualifiedDublinCoreElement.DCELEMENT_MAP
+    DCELEMENT_CODE_MAP = QualifiedDublinCoreElement.DCELEMENT_CODE_MAP
+    DCELEMENT_LIST = QualifiedDublinCoreElement.DCELEMENT_LIST
     qdce = models.ForeignKey(QualifiedDublinCoreElement, null=True, on_delete=models.SET_NULL, related_name='history') 
     qdce_id_stored = models.PositiveIntegerField(help_text='Stores the id if the QulifiedDublinCoreElement the history points to is deleted.')#For when Foreign key deleted
 
