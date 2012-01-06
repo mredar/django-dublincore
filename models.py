@@ -82,7 +82,7 @@ class AbstractQualifiedDublinCoreTerm(models.Model):
     DCTERM_CODE_MAP = dict([(x[0], x[1].lower()) for x in DCTERMS])
     DCTERM_LIST = [x[1].lower() for x in DCTERMS]
 
-    object_id = models.PositiveIntegerField()
+    object_id = models.CharField(max_length=255)
     content_type = models.ForeignKey(ContentType)
     # Don't want this constraint here. The history terms can't be related directly
     #content_object = generic.GenericForeignKey('content_type', 'object_id')
