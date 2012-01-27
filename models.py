@@ -12,7 +12,6 @@ from django.utils.safestring import mark_safe
 ###from django.utils.datastructures import SortedDict
 ###import south.modelsinspector
 ###
-###from xtf.ARK_validator import validate, ARKInvalid
 
 class AbstractQualifiedDublinCoreTerm(models.Model):
     ''' Abstract class for encapsulating Dublin Core metadata element. We support the extended terms list of DC.
