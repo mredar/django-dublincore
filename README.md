@@ -10,6 +10,7 @@ metadata terms to any Django model.
 [Dublin Core Metadata Terms](http://dublincore.org/documents/dcmi-terms/)
 
 TODO:
+
 0. Make tests work from clean install
 1. improve install process (one cmd)
 2. performance analysis - i've read that abstract classes containing datbase fields have a bad performance hit.
