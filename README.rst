@@ -12,17 +12,17 @@ metadata terms to any Django model.
 Quick start
 -----------
 
-1. git clone https://github.com/mredar/DjangoDublinCore.git
-2. cd DjangoDublinCore
+1. git clone https://github.com/mredar/django-dublincore.git
+2. cd django-dublincore
 3. python setup.py install
-4. Add "DublinCore" to your INSTALLED_APPS setting::
+4. Add "dublincore" to your INSTALLED_APPS setting::
 
         INSTALLED_APPS = (
                 ...
-                'DublinCore',
+               'dublincore',
         )
 
-5. Run `python manage.py syncdb` to create the DublinCore db tables.
+5. Run `python manage.py syncdb` to create the dublincore db tables.
 
 6. Start the development server and visit http://127.0.0.1:8000/admin/ to attach some Dublin Core metadata to your objects. (admin app must be installed)
 
