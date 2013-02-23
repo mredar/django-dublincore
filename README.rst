@@ -32,7 +32,11 @@ Quick start
     from dublincore.models import QualifiedDublinCoreElement
     ...
 
-    QDCElements = generic.GenericRelation(QualifiedDublinCoreElement)
+    class Thing(models.Model):
+        '''Some Thing
+        with dublincore metadata attached
+        '''
+    	QDCElements = generic.GenericRelation(QualifiedDublinCoreElement)
 
 
 TODO:
