@@ -7,9 +7,9 @@ README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name = 'DjangoDublinCore',
+    name = 'django-dublincore',
     version = '0.0',
-    packages = ['DublinCore'],
+    packages = ['dublincore'],
     include_package_data = True,
     license = 'BSD License - see LICENSE file', 
     description = 'A simple Django app to attach Dublin Core metadata to arbitrary Django objects',
