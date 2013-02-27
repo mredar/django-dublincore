@@ -1,5 +1,5 @@
 from django.contrib import admin
-from DublinCore.models import QualifiedDublinCoreElement, QualifiedDublinCoreElementHistory
+from dublincore.models import QualifiedDublinCoreElement, QualifiedDublinCoreElementHistory
 
 class QDCElementAdmin(admin.ModelAdmin):
     list_display = ('id', 'term', 'qualifier', 'content_', 'content_type', 'updated_at', 'created_at', 'content_object')
