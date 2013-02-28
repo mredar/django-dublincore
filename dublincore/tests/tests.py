@@ -3,7 +3,7 @@ from collections import defaultdict
 from django.test import TestCase
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
-from DublinCore.models import  QualifiedDublinCoreElement
+from dublincore.models import  QualifiedDublinCoreElement
 
 class QDCElementTestCase(TestCase):
     fixtures = ['DublinCore.qualifieddublincoreelementTest.json', 'DublinCore.auth.json']
