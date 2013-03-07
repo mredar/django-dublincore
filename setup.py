@@ -16,6 +16,7 @@ setup(
     long_description = README,
     author = 'Mark Redar',
     author_email = 'mredar@gmail.com',
+    url = 'https://github.com/mredar/django-dublincore',
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
