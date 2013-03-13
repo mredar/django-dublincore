@@ -34,7 +34,7 @@ class Migration(DataMigration):
             qdeh.content_type = c
             #qdeh.content_type = qdeh_xtf.content_type
             qdeh.object_id = qdeh_xtf.object_id
-            qdeh.qdce = orm['DublinCore.QualifiedDublinCoreElement'].objects.get(pk=qdeh_xtf.qdce.pk)
+            qdeh.qdce = orm['dublincore.QualifiedDublinCoreElement'].objects.get(pk=qdeh_xtf.qdce.pk)
             qdeh.qdce_id_stored = qdeh_xtf.qdce_id_stored
             qdeh.save()
             
@@ -45,7 +45,7 @@ class Migration(DataMigration):
 
 
     models = {
-        'DublinCore.qualifieddublincoreelement': {
+        'dublincore.qualifieddublincoreelement': {
             'Meta': {'ordering': "['term']", 'object_name': 'QualifiedDublinCoreElement'},
             'content': ('django.db.models.fields.TextField', [], {}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
@@ -56,14 +56,14 @@ class Migration(DataMigration):
             'term': ('django.db.models.fields.CharField', [], {'max_length': '4'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
         },
-        'DublinCore.qualifieddublincoreelementhistory': {
+        'dublincore.qualifieddublincoreelementhistory': {
             'Meta': {'ordering': "['term']", 'object_name': 'QualifiedDublinCoreElementHistory'},
             'content': ('django.db.models.fields.TextField', [], {}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'to': "orm['DublinCore.QualifiedDublinCoreElement']"}),
+            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'to': "orm['dublincore.QualifiedDublinCoreElement']"}),
             'qdce_id_stored': ('django.db.models.fields.PositiveIntegerField', [], {}),
             'qualifier': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'term': ('django.db.models.fields.CharField', [], {'max_length': '4'}),
@@ -188,4 +188,4 @@ class Migration(DataMigration):
         }
     }
 
-    complete_apps = ['xtf', 'DublinCore']
+    complete_apps = ['xtf', 'dublincore']
