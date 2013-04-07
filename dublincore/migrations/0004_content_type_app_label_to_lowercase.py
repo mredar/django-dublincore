@@ -1,30 +1,34 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import datetime
 from south.db import db
-from south.v2 import SchemaMigration
+from south.v2 import DataMigration
 from django.db import models
 
-class Migration(SchemaMigration):
+class Migration(DataMigration):
 
     def forwards(self, orm):
-        
-        # Changing field 'QualifiedDublinCoreElementHistory.object_id'
-        db.alter_column('dublincore_qualifieddublincoreelementhistory', 'object_id', self.gf('django.db.models.fields.CharField')(max_length=255))
-
-        # Changing field 'QualifiedDublinCoreElement.object_id'
-        db.alter_column('dublincore_qualifieddublincoreelement', 'object_id', self.gf('django.db.models.fields.CharField')(max_length=255))
-
+        "Write your forwards methods here."
+        # Note: Remember to use orm['appname.ModelName'] rather than "from appname.models..."
+        for c in orm["contenttypes.contenttype"].objects.all():
+            if c.app_label == "DublinCore":
+                c.app_label = "dublincore"
+                c.save()
 
     def backwards(self, orm):
-        
-        # Changing field 'QualifiedDublinCoreElementHistory.object_id'
-        db.alter_column('dublincore_qualifieddublincoreelementhistory', 'object_id', self.gf('django.db.models.fields.PositiveIntegerField')())
-
-        # Changing field 'QualifiedDublinCoreElement.object_id'
-        db.alter_column('dublincore_qualifieddublincoreelement', 'object_id', self.gf('django.db.models.fields.PositiveIntegerField')())
-
+        "Write your backwards methods here."
+        for c in orm["contenttypes.contenttype"].objects.all():
+            if c.app_label == "dublincore":
+                c.app_label = "DublinCore"
+                c.save()
 
     models = {
+        'contenttypes.contenttype': {
+            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
+            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
         'dublincore.qualifieddublincoreelement': {
             'Meta': {'ordering': "['term']", 'object_name': 'QualifiedDublinCoreElement'},
             'content': ('django.db.models.fields.TextField', [], {}),
@@ -43,19 +47,13 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'object_id': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'to': "orm['dublincore.QualifiedDublinCoreElement']"}),
+            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': "orm['dublincore.QualifiedDublinCoreElement']"}),
             'qdce_id_stored': ('django.db.models.fields.PositiveIntegerField', [], {}),
             'qualifier': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'term': ('django.db.models.fields.CharField', [], {'max_length': '4'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
 
     complete_apps = ['dublincore']
+    symmetrical = True

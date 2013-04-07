@@ -12,9 +12,20 @@ metadata terms to any Django model.
 Quick start
 -----------
 
-1. git clone https://github.com/mredar/django-dublincore.git
-2. cd django-dublincore
-3. python setup.py install
+1. Install django-dublincore:
+
+   a. git clone https://github.com/mredar/django-dublincore.git
+   b. cd django-dublincore
+   c. python setup.py install
+
+   or 
+
+   easy_install intall django-dublincore
+
+   or
+
+   pip install django-dublincore
+
 4. Add "dublincore" to your INSTALLED_APPS setting::
 
         INSTALLED_APPS = (

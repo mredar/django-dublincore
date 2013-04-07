@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'QualifiedDublinCoreElement'
-        db.create_table('DublinCore_qualifieddublincoreelement', (
+        db.create_table('dublincore_qualifieddublincoreelement', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')()),
             ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
@@ -19,10 +19,10 @@ class Migration(SchemaMigration):
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
-        db.send_create_signal('DublinCore', ['QualifiedDublinCoreElement'])
+        db.send_create_signal('dublincore', ['QualifiedDublinCoreElement'])
 
         # Adding model 'QualifiedDublinCoreElementHistory'
-        db.create_table('DublinCore_qualifieddublincoreelementhistory', (
+        db.create_table('dublincore_qualifieddublincoreelementhistory', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')()),
             ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
@@ -31,23 +31,23 @@ class Migration(SchemaMigration):
             ('content', self.gf('django.db.models.fields.TextField')()),
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('qdce', self.gf('django.db.models.fields.related.ForeignKey')(related_name='history', null=True, to=orm['DublinCore.QualifiedDublinCoreElement'])),
+            ('qdce', self.gf('django.db.models.fields.related.ForeignKey')(related_name='history', null=True, to=orm['dublincore.QualifiedDublinCoreElement'])),
             ('qdce_id_stored', self.gf('django.db.models.fields.PositiveIntegerField')()),
         ))
-        db.send_create_signal('DublinCore', ['QualifiedDublinCoreElementHistory'])
+        db.send_create_signal('dublincore', ['QualifiedDublinCoreElementHistory'])
 
 
     def backwards(self, orm):
         
         # Deleting model 'QualifiedDublinCoreElement'
-        db.delete_table('DublinCore_qualifieddublincoreelement')
+        db.delete_table('dublincore_qualifieddublincoreelement')
 
         # Deleting model 'QualifiedDublinCoreElementHistory'
-        db.delete_table('DublinCore_qualifieddublincoreelementhistory')
+        db.delete_table('dublincore_qualifieddublincoreelementhistory')
 
 
     models = {
-        'DublinCore.qualifieddublincoreelement': {
+        'dublincore.qualifieddublincoreelement': {
             'Meta': {'ordering': "['term']", 'object_name': 'QualifiedDublinCoreElement'},
             'content': ('django.db.models.fields.TextField', [], {}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
@@ -58,14 +58,14 @@ class Migration(SchemaMigration):
             'term': ('django.db.models.fields.CharField', [], {'max_length': '4'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
         },
-        'DublinCore.qualifieddublincoreelementhistory': {
+        'dublincore.qualifieddublincoreelementhistory': {
             'Meta': {'ordering': "['term']", 'object_name': 'QualifiedDublinCoreElementHistory'},
             'content': ('django.db.models.fields.TextField', [], {}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'to': "orm['DublinCore.QualifiedDublinCoreElement']"}),
+            'qdce': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'history'", 'null': 'True', 'to': "orm['dublincore.QualifiedDublinCoreElement']"}),
             'qdce_id_stored': ('django.db.models.fields.PositiveIntegerField', [], {}),
             'qualifier': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'term': ('django.db.models.fields.CharField', [], {'max_length': '4'}),
@@ -80,4 +80,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['DublinCore']
+    complete_apps = ['dublincore']
